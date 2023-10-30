@@ -1,8 +1,7 @@
 ---
- title: "Chasing perfect names"
- date: 2023-10-30
- ---
-
+title: "Chasing perfect names"
+date: 2023-10-30
+---
  
 As a perfectionist, I've encountered a lot of obstacles along my programming path. Over time, I learned that perfectionism can often stand in the way of actually delivering great work, but there's one area which I didn't change my view about so far: naming things.
 
