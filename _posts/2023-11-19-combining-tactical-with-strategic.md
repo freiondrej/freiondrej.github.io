@@ -19,4 +19,4 @@ As insightful as these realizations were for me to understand my past, there is 
 
 I think a spike could be a way to take the benefits of tactical programming and use them to improve your strategy faster.
 
-_Update 3.1.2024:_ I forgot to explicitly mention that within a spike, no tests are written. So even if you mostly use TDD when developing, you probably won't in a spike, because the code is not meant to be reusable - not even in tests. That also touches the aforementioned production readiness of the spike - you'd need to write some tests first, untested code should not go into production, period.
+_Update 2024-01-03:_ I forgot to explicitly mention that within a spike, no tests are written. So even if you mostly use TDD when developing, you probably won't in a spike, because the code is not meant to be reusable - not even in tests. That also touches the aforementioned production readiness of the spike - you'd need to write some tests first, untested code should not go into production, period.
