@@ -1,9 +1,9 @@
 theme: minima
+site:
+  author:
+    name: Ondřej Frei
+    email: "frei.ondrej@pm.me"
+social_links:
+  - { platform: linkedin, user_url: "https://www.linkedin.com/in/ondřej-frei-210569278" }
 minima:
-  site:
-    author:
-      name: Ondřej Frei
-      email: "frei.ondrej@pm.me"
   skin: auto
-  social_links:
-    - { platform: linkedin, user_url: "https://www.linkedin.com/in/ondřej-frei-210569278" }
