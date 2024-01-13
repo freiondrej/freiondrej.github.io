@@ -1,9 +1,8 @@
 #theme: minima
 remote_theme: jekyll/minima # to override Github Actions' default one
-site:
-  author:
-    name: Ondřej Frei
-    email: "frei.ondrej@pm.me"
+author:
+  name: Ondřej Frei
+  email: "frei.ondrej@pm.me"
 minima:
   skin: auto
   social_links:
