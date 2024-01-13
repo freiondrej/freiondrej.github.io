@@ -1,6 +1,6 @@
 #theme: minima
 remote_theme: jekyll/minima # to override Github Actions' default one
-title: 'Ondřej Frei's coding blog'
+title: "Ondřej Frei's coding blog"
 author:
   name: Ondřej Frei
   email: "frei.ondrej@pm.me"
