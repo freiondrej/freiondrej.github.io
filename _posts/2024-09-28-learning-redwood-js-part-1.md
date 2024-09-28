@@ -3,9 +3,7 @@ title: "Learning in public: Redwood.js pt1"
 date: 2024-09-28
 ---
 
-_Disclaimer: as I only found out at the end of the blogpost, I got stuck in a situation which I didn't figure out in the short time I had for this. So feel free to skip this post for now, I'll update it once I get unstuck and (hopefully) write a Part 2 as well._
-
-_Original text follows:_
+_I don't think this can be useful as a tutorial, nor do I intend it as such. Rather, it might be a showcase of how I think when discovering new things, I hope some of it might be useful to you. I'll also welcome your tips and tricks for learning new things!_
 
 Recently, I've ran across a very nice [post](https://www.swyx.io/learn-in-public) about "learning in public", i.e. extending and empowering the learning experience by sharing it, e.g. by writing. I've wanted to look into Redwood.js for a while now, so let's begin.
 
@@ -75,3 +73,15 @@ It would be awesome if I could use a step debugger, but I have no idea where to 
 ---
 
 I need to stop this now and be with my family again, so sadly this Part 1 ends without a clear success. But I'm intrigued! Hopefully I'll get to make a Part 2 soon.
+
+---
+
+## EDIT:
+
+Have some more time to try. It occurred to me the next best thing to help pinpoint the problem will be to checkout the "official" cambium and try to build+serve it. Et voilà! Indeed, the app is running. What could be the difference? What key part did I miss when copying the files one by one? I suspect it's something with the RSC rather than redwood itself, because in my app the `div#redwood-app` is empty, and as little as I know of React, I think that it's React who should be populating it. One thing I noticed but not sure if significant - when building the official cambium, only Web is being built and no note about prerendering is shown. But when building mine, Prisma client (=DB client), GraphQL schema and API are also being built, and a note about "no routes marked for prerendering" is shown, even though the Routes.tsx file is identical. Not sure if those other builds might somehow interfere... now I'm rather curious how Redwood even decides what gets built. By any chance, is it the mere presence of the `api` folder? Let me try deleting it. Yes indeed, now the `build` output is identical with the official cambium. But no, still white screen only.
+
+One thing I noticed - in my app, `web/src/Document.tsx` is logging children as `'$$typeof': Symbol(react.transitional.element)`, whereas in the official one it's `'$$typeof': Symbol(react.element)`. Could that be the difference? I have no idea what that means ... [Later I found out this is not a problem, as after using the deps from the official cambium, I was still getting the `'$$typeof': Symbol(react.transitional.element)` but this time it loaded. Guess some things can remain a mystery.]
+
+Another difference I noticed is that the output of `serve` seems to be much richer in case of the official cambium. Why? Does it depend on some config, or could it be that we're using different versions of dependencies? My output is missing `fullkey`, `buildManifest`, `proxy created`, `renderFromDist` and `attaching streaming handler` sections that are present in the official app. Ok so it seems `node_modules/.bin/rw-serve-fe` is different and it might not be a problem automatically, the newer version is just not logging as much it seems. However it is something to consider whether it's not doing something wrong. I'll try using `package.json`s from the official cambium. **Yes!! That made it work.** (And to double-check, I also tried using the new dependencies in the official cambium, and it broke it.) So for some reason, something in the official cambium repo seems incompatible with RedwoodJS v9. Talk about bad luck 😅 I suppose that's on me as I'm trying to learn an experimental version of Redwood. I'd be curious to understand what exactly the problem is, but I suppose I'd need to dig extremely deep as it can be something in Redwood internals. For a Part 2 of this post, I'll think how to proceed in a better way. Also, there might be multiple different angles to Redwood than just the RSC, which I intend to explore. Till next time! 👋🏻
+
+> While using the `yarn rw` command, I noticed there's `rw studio`. I tried it out and wow!! It seems to be an admin panel with some general observability, api schema validation + playground etc. I'm definitely putting a pin in that!
